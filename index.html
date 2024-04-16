@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        .calculator {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 5px;
+            max-width: 300px;
+            margin: 0 auto;
+        }
+
+        .calculator-screen {
+            grid-column: span 4;
+            height: 50px;
+            font-size: 2em;
+            text-align: right;
+            padding: 0 10px;
+            border: 1px solid #ccc;
+        }
+
+        .calculator-button {
+            height: 50px;
+            font-size: 1.5em;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            background-color: #f1f1f1;
+        }
+
+        .calculator-button:hover {
+            background-color: #e0e0e0;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <div class="calculator-screen" id="calculator-screen">0</div>
+        <div class="calculator-button" onclick="appendNumber('7')">7</div>
+        <div class="calculator-button" onclick="appendNumber('8')">8</div>
+        <div class="calculator-button" onclick="appendNumber('9')">9</div>
+        <div class="calculator-button" onclick="appendOperator('+')">+</div>
+        <div class="calculator-button" onclick="appendNumber('4')">4</div>
+        <div class="calculator-button" onclick="appendNumber('5')">5</div>
+        <div class="calculator-button" onclick="appendNumber('6')">6</div>
+        <div class="calculator-button" onclick="appendOperator('-')">-</div>
+        <div class="calculator-button" onclick="appendNumber('1')">1</div>
+        <div class="calculator-button" onclick="appendNumber('2')">2</div>
+        <div class="calculator-button" onclick="appendNumber('3')">3</div>
+        <div class="calculator-button" onclick="appendOperator('*')">*</div>
+        <div class="calculator-button" onclick="appendNumber('0')">0</div>
+        <div class="calculator-button" onclick="clearScreen()">C</div>
+        <div class="calculator-button" onclick="calculate()">=</div>
+        <div class="calculator-button" onclick="appendOperator('/')">/</div>
+    </div>
+
+    <script>
+        let currentInput = '0';
+
+        function updateScreen() {
+            document.getElementById('calculator-screen').innerText = currentInput;
+        }
+
+        function appendNumber(number) {
+            if (currentInput === '0' && number !== '0') {
+                currentInput = number;
+            } else {
+                currentInput += number;
+            }
+            updateScreen();
+        }
+
+        function appendOperator(operator) {
+            if (currentInput.slice(-1) !== operator) {
+                currentInput += operator;
+            }
+            updateScreen();
+        }
+
+        function clearScreen() {
+            currentInput = '0';
+            updateScreen();
+        }
+
+        function calculate() {
+            try {
+                currentInput = eval(currentInput).toString();
+            } catch (error) {
+                currentInput = 'Error';
+            }
+            updateScreen();
+        }
+    </script>
+</body>
+</html>

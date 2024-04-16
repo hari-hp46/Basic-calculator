@@ -1,0 +1,73 @@
+/* CSS for Calculator */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background-color: #f0f0f0;
+}
+
+.calculator {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 5px;
+    max-width: 300px;
+    margin: 20px auto;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.calculator-screen {
+    grid-column: span 4;
+    height: 50px;
+    font-size: 2em;
+    text-align: right;
+    padding: 0 10px;
+    border-bottom: 1px solid #ccc;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    background-color: #f7f7f7;
+}
+
+.calculator-button {
+    height: 50px;
+    font-size: 1.5em;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+    transition: background-color 0.3s ease;
+}
+
+.calculator-button:hover {
+    background-color: #e0e0e0;
+}
+
+/* Styles for operators */
+.calculator-button.operator {
+    background-color: #f7bd72;
+    color: #fff;
+}
+
+.calculator-button.operator:hover {
+    background-color: #e8ab4e;
+}
+
+/* Styles for clear button */
+.calculator-button.clear {
+    background-color: #e74c3c;
+    color: #fff;
+}
+
+.calculator-button.clear:hover {
+    background-color: #d43d2f;
+}
+
+/* Styles for equals button */
+.calculator-button.equals {
+    background-color: #2ecc71;
+    color: #fff;
+}
+
+.calculator-button.equals:hover {
+    background-color: #27ae60;
+}
